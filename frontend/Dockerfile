@@ -2,14 +2,13 @@ FROM node:22.11.0
 
 WORKDIR /app
 
-COPY package*.json ./
+EXPOSE 8080
 
+CMD ["npm", "run", "dev"]
+
+COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
 
 RUN npm run build
-
-EXPOSE 3030
-
-CMD ["npm", "run", "serve"]
